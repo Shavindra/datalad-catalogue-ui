@@ -6,8 +6,8 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Print the dataset-version tree of a catalog
-"""
+"""Print the dataset-version tree of a catalog"""
+
 from datalad_catalog.constraints import (
     CatalogRequired,
     EnsureWebCatalog,
@@ -28,7 +28,6 @@ import logging
 from pathlib import Path
 from time import gmtime, strftime
 from typing import Union
-
 
 __docformat__ = "restructuredtext"
 

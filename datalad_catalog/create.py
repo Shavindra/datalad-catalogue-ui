@@ -6,8 +6,8 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Create a new catalog
-"""
+"""Create a new catalog"""
+
 from datalad_catalog.constraints import (
     CatalogRequired,
     EnsureWebCatalog,
@@ -32,7 +32,6 @@ from datalad_next.constraints import (
 import logging
 from pathlib import Path
 from typing import Union
-
 
 __docformat__ = "restructuredtext"
 

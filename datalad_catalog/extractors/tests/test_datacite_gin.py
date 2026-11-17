@@ -8,7 +8,6 @@ from datalad.tests.utils_pytest import (
     with_tempfile,
 )
 
-
 datacite_content = """
 # Metadata for DOI registration according to DataCite Metadata Schema 4.1.
 # For detailed schema description see https://doi.org/10.5438/0014

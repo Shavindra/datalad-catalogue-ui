@@ -31,23 +31,22 @@ import datalad_catalog
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
-# generate missing pieces
-for setup_py_path in (opj(pardir, 'setup.py'),  # travis
-                      opj(pardir, pardir, 'setup.py')):  # RTD
-    if exists(setup_py_path):
-        sys.path.insert(0, os.path.abspath(dirname(setup_py_path)))
-        try:
-            for cmd in 'manpage',: #'examples':
-                os.system(
-                    '{} build_{} --cmdsuite {} --manpath {} --rstpath {}'.format(
-                        setup_py_path,
-                        cmd,
-                        'datalad_catalog:command_suite',
-                        abspath(opj(dirname(setup_py_path), 'build', 'man')),
-                        opj(dirname(__file__), 'generated', 'man')))
-        except:
-            # shut up and do your best
-            pass
+# Generate command references with the same interpreter as Sphinx and surface
+# failures instead of silently producing incomplete documentation.
+from pathlib import Path
+import subprocess
+
+project_root = Path(__file__).resolve().parents[2]
+subprocess.run(
+    [
+        sys.executable, str(project_root / 'setup.py'), 'build_manpage',
+        '--cmdsuite', 'datalad_catalog:command_suite',
+        '--manpath', str(project_root / 'build' / 'man'),
+        '--rstpath', str(Path(__file__).resolve().parent / 'generated' / 'man'),
+    ],
+    cwd=project_root,
+    check=True,
+)
 
 # -- General configuration ------------------------------------------------
 
@@ -142,3 +141,20 @@ html_show_sourcelink = False
 # but see `smartquotes_action` for more fine-grained control, in case
 # some of this functionality is needed
 smartquotes = False
+
+
+def normalise_command_examples(app, what, name, obj, options, lines):
+    """Dedent DataLad's generated Examples block before Napoleon parses it."""
+    if not name.startswith('datalad.api.catalog'):
+        return
+    for start, line in enumerate(lines):
+        if line == '    Examples' and lines[start + 1:start + 2] == ['    --------']:
+            end = start + 2
+            while end < len(lines) and (not lines[end].strip() or lines[end].startswith('    ')):
+                end += 1
+            lines[start:end] = [line[4:] if line.startswith('    ') else line for line in lines[start:end]]
+            break
+
+
+def setup(app):
+    app.connect('autodoc-process-docstring', normalise_command_examples, priority=400)

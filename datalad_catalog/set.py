@@ -6,8 +6,7 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Utility for setting various properties of a catalog
-"""
+"""Utility for setting various properties of a catalog"""
 
 import datalad_catalog.constants as cnst
 from datalad_catalog.constraints import (
@@ -33,7 +32,6 @@ from datalad_next.constraints import (
 import logging
 from pathlib import Path
 from typing import Union
-
 
 __docformat__ = "restructuredtext"
 

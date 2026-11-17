@@ -6,8 +6,8 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Add metadata to an existing catalog
-"""
+"""Add metadata to an existing catalog"""
+
 from datalad_catalog.constraints import (
     CatalogRequired,
     EnsureWebCatalog,
@@ -33,7 +33,6 @@ from jsonschema import ValidationError
 import logging
 from pathlib import Path
 from typing import Union
-
 
 __docformat__ = "restructuredtext"
 

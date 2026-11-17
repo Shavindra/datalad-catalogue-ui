@@ -3,7 +3,6 @@ from datalad_catalog.schema_utils import (
     get_metadata_item,
 )
 
-
 ds = {
     "type": "dataset",
     "dataset_id": "",

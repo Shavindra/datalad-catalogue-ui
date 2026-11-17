@@ -3,7 +3,6 @@ from datalad_catalog.validate import get_schema_store
 from datalad_catalog.utils import get_gitconfig
 from datetime import datetime
 
-
 SCHEMA_TYPES = [
     "dataset",
     "file",

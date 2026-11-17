@@ -6,8 +6,8 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Validate metadata against the catalog schema
-"""
+"""Validate metadata against the catalog schema"""
+
 import datalad_catalog.constants as cnst
 from datalad_catalog.constraints import (
     EnsureWebCatalog,
@@ -32,7 +32,6 @@ from datalad_next.exceptions import CapturedException
 import json
 import logging
 from pathlib import Path
-
 
 __docformat__ = "restructuredtext"
 

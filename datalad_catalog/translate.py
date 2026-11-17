@@ -6,8 +6,8 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Translate metalad-extracted metadata items into the catalog schema
-"""
+"""Translate metalad-extracted metadata items into the catalog schema"""
+
 import datalad_catalog.constants as cnst
 from datalad_catalog.constraints import (
     EnsureWebCatalog,
@@ -39,7 +39,6 @@ import json
 import jq
 import logging
 import os
-
 
 __docformat__ = "restructuredtext"
 
