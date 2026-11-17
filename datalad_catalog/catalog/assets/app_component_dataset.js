@@ -363,7 +363,8 @@ const datasetView = () =>
                 })
               // Home layout option: show subdatasets as full sections instead of tabs
               this.sections_layout =
-                this.selectedDataset.config?.dataset_options?.home_layout === "sections";
+                this.selectedDataset.config?.dataset_options?.home_layout === "sections" &&
+                this.selectedDataset.subdatasets_count > 0;
               // Write main derived variable and set to ready
               this.displayData = disp_dataset;
               this.display_ready = true;

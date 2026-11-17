@@ -1,0 +1,32 @@
+name: Python compatibility
+
+on:
+  push:
+    branches: [main, develop, minimal-ui]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install git-annex
+        run: sudo apt-get update && sudo apt-get install -y git-annex
+      - name: Configure Git for tests
+        run: |
+          git config --global user.name 'Catalog tests'
+          git config --global user.email 'tests@example.invalid'
+      - name: Install package and test dependencies
+        run: python -m pip install -e '.[devel]' build
+      - name: Test
+        run: python -m pytest datalad_catalog -q
+      - name: Build distributions
+        run: python -m build
