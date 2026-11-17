@@ -1112,7 +1112,8 @@ const datasetView = () =>
           // Now list all tabs and set the correct one
           // order in DOM: content, datasets, publications, funding, provenance,
           sDs = this.$root.selectedDataset
-          available_tabs = ['content', 'datasets']
+          // hide the Datasets tab when there are no subdatasets
+          available_tabs = sDs.subdatasets_count > 0 ? ['content', 'datasets'] : ['content']
           standard_tabs = ['publications', 'funding', 'provenance']
           // add available standard tabs
           for (var t=0; t<standard_tabs.length; t++) {
@@ -1276,7 +1277,8 @@ const datasetView = () =>
           // Now list all tabs and set the correct one
           // order in DOM: content, datasets, publications, funding, provenance,
           sDs = this.$root.selectedDataset
-          available_tabs = ['content', 'datasets']
+          // hide the Datasets tab when there are no subdatasets
+          available_tabs = sDs.subdatasets_count > 0 ? ['content', 'datasets'] : ['content']
           standard_tabs = ['publications', 'funding', 'provenance']
           // add available standard tabs
           for (var t=0; t<standard_tabs.length; t++) {

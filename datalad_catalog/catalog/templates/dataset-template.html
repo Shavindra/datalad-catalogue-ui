@@ -306,7 +306,7 @@
             </span>
           </b-tab>
           <!-- SUBDATASETS -->
-          <b-tab key="datasets" ref="tabelement">
+          <b-tab key="datasets" ref="tabelement" v-if="selectedDataset.subdatasets_count > 0">
             <template v-slot:title>
               <i class="fas fa-list-ol"></i> Datasets <span v-if="subdatasets_ready">({{selectedDataset.subdatasets_available_count}})</span>
             </template>
