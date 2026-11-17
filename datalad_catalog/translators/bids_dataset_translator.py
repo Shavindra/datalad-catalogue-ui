@@ -7,6 +7,7 @@
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
 """Translate bids_dataset-based metadata to the catalog schema"""
+
 import jq
 import logging
 from pathlib import Path

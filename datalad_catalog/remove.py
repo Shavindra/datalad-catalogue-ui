@@ -6,8 +6,8 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Remove metadata from an existing catalog
-"""
+"""Remove metadata from an existing catalog"""
+
 from datalad_catalog.constraints import (
     CatalogRequired,
     EnsureWebCatalog,
@@ -32,7 +32,6 @@ import logging
 from pathlib import Path
 import shutil
 from typing import Union
-
 
 __docformat__ = "restructuredtext"
 

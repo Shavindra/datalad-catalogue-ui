@@ -7,6 +7,7 @@
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
 """Metadata extractor for GIN-flavored datacite.yml information"""
+
 import logging
 import yaml
 from pathlib import Path
@@ -20,7 +21,6 @@ from datalad_metalad.extractors.base import (
 from datalad_metalad.extractors.legacy.definitions import vocabulary_id
 from datalad.log import log_progress
 from datalad.utils import ensure_unicode
-
 
 lgr = logging.getLogger("datalad.metadata.extractors.datacite_gin")
 

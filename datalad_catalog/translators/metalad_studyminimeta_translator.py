@@ -7,6 +7,7 @@
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
 """Translate metalad_studyminimeta-based metadata to the catalog schema"""
+
 import jq
 import logging
 from pathlib import Path

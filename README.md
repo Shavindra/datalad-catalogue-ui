@@ -258,3 +258,23 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Maintained UI fork
+
+Keep `main` aligned with upstream, use `develop` for ongoing fork maintenance,
+and review the Python 3.14 and monochrome changes on `minimal-ui`. This branch
+includes the existing `feat/home-sections` work.
+
+The UI reuses the existing Vue/Bootstrap application. `assets/minimal.css` is a
+small black-and-white overlay, with a text header and a persistent Home link.
+There is no new frontend framework or build step. Remove its stylesheet link
+from `catalog/index.html` to restore the original styling.
+
+Enable the home sections using the dataset-level configuration shown above.
+Datasets without children retain their file browser even if they inherit
+`home_layout: sections`. The sections display existing catalogue entries;
+ordinary folders still need catalogue metadata to appear as separate projects.
+
+For Python 3.14, install with `python -m pip install -e '.[devel]'` and run
+`python -m pytest datalad_catalog -q`. Git and git-annex must be installed.
+The compatibility workflow tests Python 3.12 and 3.14 and builds the package.

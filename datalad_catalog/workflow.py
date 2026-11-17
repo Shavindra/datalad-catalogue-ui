@@ -6,8 +6,7 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Run a workflow to create or update a catalog
-"""
+"""Run a workflow to create or update a catalog"""
 
 from datalad.distribution.dataset import Dataset
 from datalad.support.exceptions import IncompleteResultsError
@@ -44,7 +43,6 @@ from datalad_next.constraints.dataset import EnsureDataset
 import logging
 from pathlib import Path
 from typing import Union
-
 
 __docformat__ = "restructuredtext"
 

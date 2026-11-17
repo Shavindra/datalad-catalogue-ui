@@ -1,0 +1,50 @@
+/* Small presentation layer over the existing catalogue and Bootstrap UI. */
+#mainbody {
+  --link-color: #171717;
+  --link-hover-color: #525252;
+  --refcolor: #525252;
+  background: #fff;
+  color: #171717;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+#datacat { max-width: 1120px; }
+.catalog-brand { font-size: 1.25rem; font-weight: 650; text-decoration: none; }
+#datacat > .container:first-child { border-bottom: 1px solid #ddd; padding-bottom: 1rem; }
+.card, .modal-content, .dropdown-menu, .popover, #desc_display {
+  border-color: #d4d4d4 !important;
+  border-radius: 4px;
+  box-shadow: none;
+}
+.dataset-nav, .shadow, .shadow-sm { box-shadow: none !important; }
+.card-body { padding: 1.25rem; }
+.home-sections .card-body > .card-body { padding: 0; }
+.home-sections .card-title { font-size: 1.35rem; font-weight: 600; }
+.home-sections .card-title a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.home-sections .card-text { max-width: 80ch; }
+.home-sections .col-md-9 { text-align: left !important; }
+.text-muted, .card-subtitle { color: #595959 !important; }
+.nav-tabs .nav-link { color: #525252; }
+.nav-tabs .nav-link.active { color: #111; border-bottom: 2px solid #111; font-weight: 600; }
+.btn, .form-control, .custom-select { border-radius: 4px !important; }
+.btn-primary, .page-item.active .page-link, .dropdown-item.active {
+  color: #fff;
+  background-color: #171717;
+  border-color: #171717;
+}
+.page-link, .text-warning, .text-primary { color: #171717 !important; }
+.btn-primary:hover, .btn-primary:focus { background-color: #404040; border-color: #404040; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+.btn:focus, .form-control:focus, .custom-select:focus {
+  border-color: #171717;
+  box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 15%);
+}
+.btn img { filter: grayscale(1); }
+@media (max-width: 575px) {
+  .card-body { padding: 1rem; }
+  .catalog-brand { font-size: 1.1rem; }
+}

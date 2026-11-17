@@ -6,8 +6,8 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Utility for getting various properties of a catalog
-"""
+"""Utility for getting various properties of a catalog"""
+
 from datalad_catalog.constraints import (
     CatalogRequired,
     EnsureWebCatalog,
@@ -34,7 +34,6 @@ import logging
 import json
 from pathlib import Path
 from typing import Union
-
 
 __docformat__ = "restructuredtext"
 

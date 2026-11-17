@@ -6,7 +6,6 @@ from datalad_catalog.node import Node
 from pathlib import Path
 import pytest
 
-
 CATALOG_NAME = "catalog_name"
 
 tests_path = Path(__file__).resolve().parent

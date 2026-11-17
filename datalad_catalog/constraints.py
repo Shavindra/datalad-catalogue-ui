@@ -6,8 +6,8 @@
 #   copyright and license terms.
 #
 # ## ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ##
-"""Utility constraints
-"""
+"""Utility constraints"""
+
 from datalad_catalog.webcatalog import (
     WebCatalog,
 )
