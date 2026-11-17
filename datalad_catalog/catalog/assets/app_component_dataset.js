@@ -33,6 +33,7 @@ const datasetView = () =>
             subdatasets_ready: false,
             dataset_ready: false,
             display_ready: false,
+            sections_layout: false,
             displayData: {},
             files_ready: false,
             tags_ready: false,
@@ -360,6 +361,9 @@ const datasetView = () =>
                 .catch(error => {
                   // do nothing
                 })
+              // Home layout option: show subdatasets as full sections instead of tabs
+              this.sections_layout =
+                this.selectedDataset.config?.dataset_options?.home_layout === "sections";
               // Write main derived variable and set to ready
               this.displayData = disp_dataset;
               this.display_ready = true;
@@ -368,6 +372,9 @@ const datasetView = () =>
           },
         },
         computed: {
+          availableSubdatasets() {
+            return (this.subdatasets || []).filter((c) => c.available == "true");
+          },
           filteredSubdatasets() {
             all_subdatasets = this.subdatasets.filter(
               (obj) => obj.available == "true"
@@ -952,6 +959,13 @@ const datasetView = () =>
             var idx = this.selectedDataset.available_tabs.indexOf(default_tab.toLowerCase())
             return idx >= 0 ? idx : 0
           },
+          shortAuthorList(authors) {
+            if (!authors || !authors.length) return "";
+            var names = authors.map((a) =>
+              a.familyName ? ((a.givenName ? a.givenName + " " : "") + a.familyName) : (a.name || "").trim()
+            );
+            return names.length > 3 ? names[0] + " et al." : names.join(", ");
+          },
           clickBackButton() {
             console.debug(
               "%c> USER INPUT: backbutton clicked",
@@ -1046,6 +1060,16 @@ const datasetView = () =>
                   index
                 ].keywords
                   ? subds_json[index].keywords
+                  : [];
+                this.$root.selectedDataset.subdatasets[index].description = subds_json[
+                  index
+                ].description
+                  ? subds_json[index].description
+                  : "";
+                this.$root.selectedDataset.subdatasets[index].publications = subds_json[
+                  index
+                ].publications
+                  ? subds_json[index].publications
                   : [];
                 this.$root.selectedDataset.subdatasets[index].available = "true";
               } else {
@@ -1207,6 +1231,10 @@ const datasetView = () =>
                   subds_json[index].authors;
                 this.$root.selectedDataset.subdatasets[index].keywords =
                   subds_json[index].keywords;
+                this.$root.selectedDataset.subdatasets[index].description =
+                  subds_json[index].description || "";
+                this.$root.selectedDataset.subdatasets[index].publications =
+                  subds_json[index].publications || [];
                 this.$root.selectedDataset.subdatasets[index].available = "true";
               } else {
                 this.$root.selectedDataset.subdatasets[index].available = "false";

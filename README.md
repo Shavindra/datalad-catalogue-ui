@@ -38,6 +38,20 @@ This software was developed with support from:
 - the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) under grant SFB 1451 ([431549029](https://gepris.dfg.de/gepris/projekt/431549029), INF project).
 - the [MKW-NRW: Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen](https://www.mkw.nrw/) under the Kooperationsplattformen 2022 program, grant number: KP22-106A
 
+
+## Fork note: home page sections (`home_layout`)
+
+This fork adds one option to the dataset-level config (`catalog-add -F config.json`):
+
+```json
+{"dataset_options": {"home_layout": "sections"}}
+```
+
+When set on a dataset, its page shows the title and description followed by one full
+section per subdataset (name, paper authors, DOI, publication, description, keywords and
+a link to the subdataset's files), instead of the usual header and tabs. Without the
+option, pages render exactly as upstream.
+
 ## 1. Online demo
 
 Navigate to [https://datalad-catalog.netlify.app/](https://datalad-catalog.netlify.app/) to view a live demo of a catalog generated with DataLad Catalog.

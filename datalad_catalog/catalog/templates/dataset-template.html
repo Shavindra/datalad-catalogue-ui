@@ -1,4 +1,55 @@
-<div v-if="display_ready">
+<div>
+  <!-- HOME SECTIONS LAYOUT: enabled with dataset_options.home_layout = "sections" in the
+       dataset-level config. Shows the page title and description, then one full
+       section per subdataset, instead of the usual header and tabs. -->
+  <div v-if="display_ready && sections_layout" class="home-sections">
+    <b-card border-variant="dark">
+      <b-card-body>
+        <b-card-title>
+          <div class="dataset-title">{{displayData.display_name}}</div>
+        </b-card-title>
+        <b-card-text v-if="selectedDataset.description">{{selectedDataset.description}}</b-card-text>
+      </b-card-body>
+    </b-card>
+    <b-card v-for="ds in availableSubdatasets" :key="ds.dataset_id" border-variant="dark" class="mt-3">
+      <b-card-body>
+        <b-card-title>
+          <a @click="selectDataset($event, ds)" class="newlink">{{ds.name ? ds.name : ds.dirs_from_path.at(-1)}}</a>
+        </b-card-title>
+        <b-card-sub-title class="mb-2" v-if="ds.publications && ds.publications.length">
+          {{shortAuthorList(ds.publications[0].authors)}}
+        </b-card-sub-title>
+        <b-card-text>
+          <strong>Folder:</strong> {{ds.dataset_path}}&nbsp;
+          <strong>Version:</strong> {{ds.dataset_version.substring(0,7)}}&nbsp;
+          <strong>DOI:</strong>
+          <span v-if="ds.publications && ds.publications.length && ds.publications[0].doi">
+            <a :href="ds.publications[0].doi" target="_blank">{{ds.publications[0].doi.replace("https://doi.org/", "")}}</a>
+          </span>
+          <span v-else-if="ds.doi"><a :href="ds.doi" target="_blank">{{ds.doi.replace("https://doi.org/", "")}}</a></span>
+          <span v-else><em>unknown</em></span>
+        </b-card-text>
+        <b-card-text v-for="pub in ds.publications" :key="pub.title">
+          <strong>Paper:</strong> {{pub.title}}<span v-if="pub.publicationOutlet">. <em>{{pub.publicationOutlet}}</em></span><span v-if="pub.datePublished"> ({{pub.datePublished}})</span>
+        </b-card-text>
+        <hr>
+        <b-row no-gutters>
+          <b-col md="9" style="text-align: justify;">
+            <b-card-text><strong>Description:</strong> {{ds.description}}</b-card-text>
+          </b-col>
+          <b-col md="3" class="pl-3">
+            <b-card-text>
+              <strong>Keywords:</strong><br>
+              <span v-for="keyword in ds.keywords"><b-button pill size="sm" class="p-1 mb-1" variant="outline-secondary">{{keyword}}</b-button>&nbsp;</span>
+            </b-card-text>
+          </b-col>
+        </b-row>
+        <b-button variant="outline-dark" size="sm" @click="selectDataset($event, ds)"><i class="fas fa-folder-open"></i> Open files</b-button>
+      </b-card-body>
+    </b-card>
+  </div>
+  <!-- STANDARD LAYOUT -->
+<div v-else-if="display_ready">
     <b-card border-variant="dark">
       <!-- TOP SECTION -->
       <b-card-body>
@@ -611,3 +662,4 @@
       </b-card-body>
     </b-card>
   </div>
+</div>
